@@ -40,23 +40,22 @@ int random52(void)
 	return(outcome);
 }
 
-void deck_shuffle(struct deck d)
+void deck_shuffle(struct deck *d)
 {
 	int count = 0;
-	while(count < 300){
+	while(count < 500){
 		int location1 = random52();
 		int location2 = random52();
 		//struct card temp_card;
-		struct card card_one = d.cards[location1];
-		struct card card_two = d.cards[location2];
+		struct card card_one = d->cards[location1];
+		struct card card_two = d->cards[location2];
 		//temp_card = card_one;
-		d.cards[location1] = card_two;
-		d.cards[location2] = card_one;
+		d->cards[location1] = card_two;
+		d->cards[location2] = card_one;
 		//puts(card_one.suit);
 		count++;
 	}
 }
-
 void deck_deal(struct deck d, struct card hand[], size_t amt)
 {
 	for(size_t i = 0; i < amt; i++){
